@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="True" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Brightside Players</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Oswald', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+body { font-family: 'Oswald', sans-serif; }
+h1,h2,h3,h4{letter-spacing:.5px}p{font-weight:400}
+#main-page{overflow-y:auto;height:100vh}
+@keyframes kenburns{0%{transform:scale(1.05)}100%{transform:scale(1.12)}}
+.kenburns{animation:kenburns 20s ease-in-out infinite alternate}
+
+/* POLISH */
+.fade-in{opacity:0;transform:translateY(20px);transition:all .8s ease}
+.fade-in.visible{opacity:1;transform:none}
+.glow:hover{box-shadow:0 0 25px rgba(255,255,255,0.4)}
+.social-glow:hover{box-shadow:0 0 20px rgba(45,212,191,0.6), 0 0 40px rgba(45,212,191,0.3)}
+.card{transition:all .3s ease}
+.card:hover{transform:scale(1.05);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+button{transition:all .2s ease}
+button:active, a:active{
+  transform: scale(0.95) translateY(1px);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+}
+button:hover{transform:scale(1.05)}
+img{transition:all .4s ease}
+#joke-text{opacity:1;transition:opacity .3s ease}
+#joke-text div{white-space:pre-wrap}
+.joke-fade{opacity:0}
+
+body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !important; }
+</style>
+</head>
+<body class="bg-black text-white font-sans" style="font-family: 'Montserrat', sans-serif;">
+<header class="flex justify-between items-center p-6 border-b border-white sticky top-0 bg-black z-50">
+<div class="flex items-center gap-3">
+<button class="text-white" id="home-btn" onclick="goHome()">
+<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z"></path></svg>
+</button>
+<h1 class="text-xl font-bold cursor-pointer" onclick="goHome()">Brightside Players</h1>
+</div>
+<nav class="text-sm flex items-center gap-4">
+<button class="border border-white px-3 py-1 rounded-lg hover:bg-white hover:text-black transition glow" onclick="tellJoke()">Need a joke?</button>
+<div class="hidden md:flex items-center gap-4">
+<a href="#" onclick="openAbout(); return false;">About</a>
+<a href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('past'),100); return false;">Past Shows</a>
+<a href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact</a>
+</div>
+<button class="md:hidden border border-white px-3 py-1 rounded-lg transition" id="menu-btn" onclick="toggleMenu()">☰</button>
+</nav>
+<div class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 z-30" id="menu-backdrop"></div>
+<div class="fixed top-0 left-0 right-0 bg-black border-b border-white z-40 p-6 flex flex-col gap-4 transform -translate-y-full opacity-0 pointer-events-none transition-all duration-300" id="mobile-menu">
+<a href="#" onclick="openAbout(); return false;">About</a>
+<a href="#" onclick="closeMenu(); goHome(); setTimeout(()=&gt;scrollToSection('past'),100); return false;">Past Shows</a>
+<a href="#" onclick="closeMenu(); goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact</a>
+</div>
+</header>
+<div id="main-page">
+<section class="relative w-full h-[50vh] md:h-[70vh] overflow-hidden">
+<img class="w-full h-full object-cover kenburns" src="https://i.imgur.com/TI1ifLX.jpg"/>
+<div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 to-transparent"></div>
+</section>
+<section class="p-10 max-w-4xl mx-auto fade-in">
+<div class="flex items-center justify-between gap-4 flex-wrap">
+<h2 class="text-4xl font-bold">The Little Mermaid</h2>
+<a class="inline-block bg-teal-400 text-black px-6 py-4 rounded-xl font-semibold transition transform hover:scale-105 hover:bg-teal-300 active:scale-95 glow" href="https://www.firstontarioartscentremilton.ca/en/shows-and-events/additional-performances-2025.aspx" target="_blank">
+    BUY TICKETS
+  </a>
+</div>
+<div class="mt-4 space-y-4 leading-relaxed">
+<div class="text-left">
+<p class="text-xs tracking-[0.35em] uppercase opacity-70">Dive into Adventure</p>
+</div>
+<p>Right, everybody listen up. We need to talk about making deals with Sand Witches.</p>
+<p>Shelley the mermaid has one dream. Not a palace. Not a treasure chest. Not even a decent Wi-Fi signal. Just ONE day on land. That's it. That's all she wants. And when the Sand Witch comes slithering along with exactly that offer... does Shelley stop to read the small print? She does not.</p>
+<p>Because here's the catch. If Shelley doesn't fix everything before the day is done, she loses her voice. <strong>FOREVER.</strong> Now, is that a reasonable set of terms? <strong>IT IS NOT.</strong> Is the Sand Witch full of baloney? <strong>SHE IS ABSOLUTELY FULL OF BALONEY.</strong> Will we be booing her every single time she sets foot on that stage? <strong>YOU TRY AND STOP US.</strong></p>
+<p>Down on the sea floor, things have gotten dire. King Plastico has been merrily dumping rubbish into the ocean and frankly the whole place is a TIP. Shelley has had enough. Her friends have had enough. Even the fish have had enough, and fish are generally quite easy going.</p>
+<p>Speaking of friends! Let's hear it for the lineup: Double Double the wisecracking, fast-talking, impossibly charming crustacean who always has something to say and is rarely helpful but always entertaining! The crab. In a cup. You heard us correctly. Moving on! And of course... the incomparable... the irreplaceable... the one, the only... DAME HATTIE HALIBUT! (AAAAAWWWW! YAY! ALL OF THE ABOVE!), who runs a fish and chip shop in town. (Don’t mention the Fishmonger, they are complete rivals)</p>
+<p>Together this unlikely crew is going to take on a greedy king, outwit a scheming Sand Witch, clean up the ocean, AND save Shelley's voice before the clock runs out.</p>
+<p>Will they manage it? <strong>THEY WILL TRY!</strong> Will there be singing? <strong>THERE WILL BE SINGING!</strong> Will there be chaos, colour, and at least one moment where someone gets absolutely soaked? ...we did say splash into a night of laughter. You were warned. Don’t worry, you don’t really need an umbrella.</p>
+<p>Cheer for the heroes! Boo the villains! And if you see that Sand Witch coming… She's on a roll and she's got a lot of crust. <strong>Don't let her get away with it!</strong></p>
+</div>
+<a class="inline-block mt-6 bg-teal-400 text-black px-6 py-4 rounded-xl font-semibold transition transform hover:scale-105 hover:bg-teal-300 active:scale-95 glow" href="https://www.firstontarioartscentremilton.ca/en/shows-and-events/additional-performances-2025.aspx" target="_blank">
+BUY TICKETS
+</a>
+</section>
+<section class="p-10 border-t border-white fade-in">
+<div class="max-w-5xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+<div>
+<h3 class="text-2xl md:text-3xl">Follow Us</h3>
+<p class="text-sm opacity-60">@brightsideplayers</p>
+</div>
+<div class="flex flex-col gap-3 w-full md:flex-row md:w-auto">
+<a class="flex items-center justify-center gap-2 text-sm border border-white px-4 py-2 rounded-xl transition hover:bg-white hover:text-black w-full social-glow" href="https://www.instagram.com/brightsideplayers/" target="_blank"><svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"></path></svg> INSTAGRAM</a>
+<a class="flex items-center justify-center gap-2 text-sm border border-white px-4 py-2 rounded-xl transition hover:bg-white hover:text-black w-full social-glow" href="https://www.tiktok.com/@brightside_players" target="_blank"><svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 3c.3 1.7 1.7 3 3.5 3.2v2.3c-1.4 0-2.7-.4-3.8-1.1v6.2a5.6 5.6 0 1 1-4.8-5.6v2.4a3.2 3.2 0 1 0 2.4 3.1V3h2.7z"></path></svg> TIKTOK</a>
+<a class="flex items-center justify-center gap-2 text-sm border border-white px-4 py-2 rounded-xl transition hover:bg-white hover:text-black w-full social-glow" href="https://www.facebook.com/brightsideplayers/" target="_blank"><svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 22v-9h3l1-4h-4V7c0-1.2.3-2 2-2h2V1.5A26 26 0 0 0 14.5 1C11.4 1 9 3 9 6.6V9H6v4h3v9h4z"></path></svg> FACEBOOK</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<img class="w-full aspect-square object-cover rounded-lg cursor-pointer" onclick="window.open('https://www.instagram.com/brightsideplayers/','_blank')" src="https://i.imgur.com/cL7qEGO.jpg"/>
+<img class="w-full aspect-square object-cover rounded-lg cursor-pointer" onclick="window.open('https://www.instagram.com/brightsideplayers/','_blank')" src="https://i.imgur.com/4s4m375.jpg"/>
+<img class="w-full aspect-square object-cover rounded-lg cursor-pointer" onclick="window.open('https://www.instagram.com/brightsideplayers/','_blank')" src="https://i.imgur.com/X5COlZU.jpg"/>
+<img class="w-full aspect-square object-cover rounded-lg cursor-pointer" onclick="window.open('https://www.instagram.com/brightsideplayers/','_blank')" src="https://i.imgur.com/NyCX8Ys.jpg"/>
+<img class="w-full aspect-square object-cover rounded-lg cursor-pointer" onclick="window.open('https://www.instagram.com/brightsideplayers/','_blank')" src="https://i.imgur.com/OWBi7gr.jpg"/>
+<img class="w-full aspect-square object-cover rounded-lg cursor-pointer" onclick="window.open('https://www.instagram.com/brightsideplayers/','_blank')" src="https://i.imgur.com/A0lj6nr.jpg"/>
+</div>
+</div>
+</section>
+<section class="p-10 border-t border-white fade-in" id="past">
+<h3 class="text-2xl mb-6">Past Shows</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="past-grid"></div>
+</section>
+<section class="p-10 border-t border-white fade-in" id="contact">
+<h3 class="text-2xl mb-6">Contact Us</h3>
+<div class="mb-8 space-y-4 max-w-xl">
+<p class="text-xl font-semibold">OI! YES YOU!</p>
+<p>Got a question? A burning enquiry? A complaint about the villain? We want to hear it!</p>
+<p><span class="font-semibold">Email:</span> info@brightsideplayers.com</p>
+<p><span class="font-semibold">Location:</span> Milton, Ontario</p>
+<p class="text-lg font-semibold">WE WILL WRITE BACK!</p>
+<p>Oh yes we will.</p>
+</div>
+<form action="https://formspree.io/f/mjgpvndb" class="space-y-4" id="contact-form" method="POST">
+<input class="w-full p-3 bg-black border border-white" name="name" placeholder="Name" required=""/>
+<input class="w-full p-3 bg-black border border-white" name="email" placeholder="Email" required="" type="email"/>
+<textarea class="w-full p-3 bg-black border border-white" name="message" placeholder="Message" required=""></textarea>
+<button class="bg-white text-black px-6 py-4">Send</button>
+</form>
+<!-- SUCCESS MODAL -->
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50" id="success-modal">
+<div class="bg-black border border-white p-8 rounded-2xl max-w-md text-center">
+<p class="text-lg">It's behind you! Your message that is.</p>
+<p class="mt-2 text-sm opacity-70">We'll get back to you shortly.</p>
+</div>
+</div>
+</section>
+<div class="w-full h-40 md:h-56 overflow-hidden">
+<img class="w-full h-full object-cover object-[center_15%]" src="https://i.imgur.com/F8o1GfS.jpg"/>
+</div>
+<footer class="border-t border-white mt-10 p-6 text-left text-sm opacity-70">
+<p>© 2026 Brightside Players</p>
+<p class="mt-2">Made with chaos, glitter, and a questionable number of pop tarts.</p>
+</footer>
+</div>
+<!-- SHOW PAGE -->
+<div class="hidden bg-black text-white min-h-screen opacity-0 transition-opacity duration-700" id="about-page"><div class="max-w-4xl mx-auto"><section class="w-full h-[40vh] md:h-[55vh] overflow-hidden"><img class="w-full h-full object-cover" src="https://i.imgur.com/6OYiCaX.jpg"/></section><section class="p-10 fade-in">
+<button class="mb-6 underline" onclick="goHome()">← Back</button>
+<h1 class="text-4xl font-bold mb-6">Welcome to the Brightside!</h1>
+<div class="space-y-6 text-lg leading-relaxed">
+<p>Every year we take over the FirstOntario Centre for the Arts in Milton and turn it into the most gloriously chaotic place in the entire region.</p>
+<p>We put on a traditional British pantomime, and if you've never been to a panto before, buckle up. Panto is loud, silly, interactive theatre where the audience is every bit as much a part of the show as the cast. You'll boo the villains, cheer the heroes, shout warnings at characters who absolutely cannot hear you, and leave with your voice slightly hoarse and your face hurting from laughing. It is theatre that grabs you by the hand, pulls you out of your seat, and refuses to let you be a bystander. With something to delight everyone from ages 5 to 55, panto is a night out the whole family can get behind. Literally. IT'S BEHIND YOU!</p>
+<p>We are a community theatre, built by the people of Milton, for the people of Milton. Our cast, our crew, our volunteers... they are your neighbours, your kids' teachers, the person you see at the grocery store on a Saturday morning. If we're being honest, the thing that drives us most isn't the applause, or the laughs, or even the standing ovations. It's watching someone discover what they're capable of. The first-timer who didn't know they could sing. The shy kid who found their voice in front of a full house. The adult who always wondered and finally gave it a go. Watching people grow in theatre is, without question, our greatest act.</p>
+<p>That's why we do this.</p>
+<p>We'll see you in the theatre. Don't forget to boo the villain.</p>
+<p>We have a feeling they'll deserve it.</p>
+Inspired to volunteer? Fill out our <a class="underline" href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact Us</a> form on the main page!
+</div>
+</section></div></div><div class="hidden bg-white text-black min-h-screen" id="show-page">
+<div class="max-w-4xl mx-auto p-10">
+<button class="mb-6 underline" onclick="closeShow()">← Back</button>
+<img class="w-full rounded-xl mb-6" id="show-img"/>
+<h1 class="text-3xl font-bold mb-4" id="show-title"></h1>
+<div class="space-y-4 leading-relaxed" id="show-desc"></div>
+<div class="flex justify-between mt-10">
+<button class="bg-black text-white px-4 py-2 rounded" onclick="prevShow()">← Previous</button>
+<button class="bg-black text-white px-4 py-2 rounded" onclick="nextShow()">Next →</button>
+</div>
+<img class="w-full rounded-xl mt-8" id="show-img-2"/>
+</div>
+</div>
+<!-- JOKE MODAL -->
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50" id="joke-modal">
+<div class="bg-black border border-white p-6 rounded-xl max-w-md w-full h-[260px] md:h-[240px] flex flex-col text-center" id="joke-card">
+<div class="text-lg flex-1 overflow-y-auto mb-3" id="joke-text"></div>
+<div class="flex gap-3 mt-4">
+<button class="border border-white px-4 py-2 rounded-lg" onclick="closeJoke()">Close</button>
+<button class="bg-teal-400 text-black px-4 py-2 rounded-lg" onclick="anotherJoke()">Another</button>
+</div>
+</div>
+</div>
+<script>
+  // About now uses separate page (about.html)
+
+function toggleMenu(){
+  const menu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('menu-backdrop');
+
+  const isOpen = !menu.classList.contains('opacity-0');
+
+  if(isOpen){
+    menu.classList.add('opacity-0','-translate-y-full','pointer-events-none');
+    backdrop.classList.add('opacity-0','pointer-events-none');
+  } else {
+    menu.classList.remove('opacity-0','-translate-y-full','pointer-events-none');
+    backdrop.classList.remove('opacity-0','pointer-events-none');
+  }
+}
+
+function closeMenu(){
+  const menu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('menu-backdrop');
+  menu.classList.add('opacity-0','-translate-y-full','pointer-events-none');
+  backdrop.classList.add('opacity-0','pointer-events-none');
+}
+function scrollToSection(id){
+  const container = document.getElementById('main-page');
+  const target = document.getElementById(id);
+  if(target && container){
+    container.scrollTo({ top: target.offsetTop, behavior:'smooth'});
+  }
+}
+
+function setHomeIcon(color){
+  const btn = document.getElementById('home-btn');
+  if(!btn) return;
+  btn.classList.remove('text-white','text-black');
+  btn.classList.add(color === 'black' ? 'text-black' : 'text-white');
+}
+
+function goHome(){
+  document.getElementById('show-page').classList.add('hidden');
+  document.getElementById('main-page').classList.remove('hidden');
+  document.getElementById('main-page').scrollTo({ top: 0, behavior: 'smooth' });
+  setHomeIcon('white');
+}
+
+// DATA (FULL SAFE RESTORE)
+const shows = [
+  {
+    title:"The Princess and the Poptart",
+    year:"2025",
+    img:"https://i.imgur.com/I7klOhS.jpg",
+    img2:"https://i.imgur.com/zEitFHk.jpg",
+    desc:`Picture the scene.
+
+A Princess.
+
+A Peasant.
+
+One very bad idea.
+
+And a fairy who just might be in training and didn't think to mention it.
+
+What was supposed to be a fun little swap for the day has gone spectacularly, catastrophically, BRILLIANTLY wrong, and now nobody knows who is who, where anything is, or frankly what is even happening anymore.
+
+Can fairy magic fix what fairy magic broke?
+
+THAT IS AN EXCELLENT QUESTION!
+
+This year's show has everything.
+
+And we do mean everything.
+
+There are pop tarts.
+
+They dance.
+
+We don't know why and we didn't ask.
+
+There is an ostrich on the loose.
+
+If you are sitting in the front rows... we suggest you tuck your belongings in.
+
+There is a mattress that eats things.
+
+Whole things.
+
+Important things.
+
+Things we very much needed back.
+
+It has no remorse.
+
+It feels nothing.
+
+And then there is THE dress.
+
+You may have seen it.
+
+You may think you are prepared for it.
+
+You are not prepared for it.
+
+(see it below - yes it is a set of curtains)
+
+Now!
+
+We are absolutely thrilled to welcome back our very special guest of honour, the legend, the icon, Milton's favourite Counsellor...
+
+COLIN BEST!
+
+(aaaawwww, whatever you feel is appropriate!)
+
+Colin is an absolute tremendous sport and after everything we put him through last time, the fact that he has returned tells you everything you need to know about the man.
+
+We salute him.
+
+We also cannot promise this year will be any easier for him.
+
+Sorry Colin.
+
+Will the Princess and the Peasant ever find their way back to their own lives?
+
+Will the ostrich ever be caught?
+
+Will the mattress ever give back what it has taken?
+
+Come along and find out.
+
+Just maybe... don't bring anything you're too attached to.`
+  },
+  {
+    title:"Snow White and the Five Guys Fries",
+    year:"2024",
+    img:"https://i.imgur.com/ziVUpzb.jpg",
+    img2:"https://i.imgur.com/mWEqpEq.jpg",
+    desc:`Oh yes she did!
+
+The Evil Queen (booooo, hisssss, that's right, let her have it) has gone and bought herself a magic mirror.
+
+Now, she could have splashed out on a decent one, but oh no.
+
+She went for the budget option.
+
+Ladies and gentlemen, boys and girls, she bought herself an Alexis.
+
+And every time that thing turns on...
+
+every.
+
+single.
+
+time....
+
+it does a FULL song-and-dance routine to A Little Bit Alexis.
+
+Is she happy about it?
+
+SHE IS NOT.
+
+Are WE happy about it?
+
+OH YES WE ARE!
+
+Meanwhile, sweet Snow White (aaaawwww!) has legged it into the enchanted forest to save herself, and what does she find?
+
+A quaint burger cottage run by the Five Fry Guys.
+
+They are going to do everything in their power to protect our Snow White from the wicked Queen...
+
+but between you and me...
+
+she doesn't make it easy, does she?
+
+Now, will the Evil Queen EVER stop grabbing innocent woodland animals and demanding they tell her she's a good singer?
+
+SHE WILL NOT!
+
+Will the Prince (you know who you are, love) finally own up to who he is and come to Snow White's rescue?
+
+HE MIGHT!
+
+Eventually!
+
+If we're lucky!
+
+Oh, and one more thing.
+
+There's a dragon.
+
+We should have said that earlier.
+
+We're saying it now.
+
+YOU HAVE BEEN WARNED.`
+  },
+  {
+    title:"Robin Hood & the Golden Goose",
+    year:"2023",
+    img:"https://i.imgur.com/6sL7jOc.jpg",
+    img2:"https://i.imgur.com/Rb5dJ6y.jpg",
+    desc:`Maid Marian is the most famous influencer in all the land.
+
+She's got the followers, she's got the ring light, she's got the angles.
+
+What she does NOT have is a lawyer.
+
+Because a sneaky, stinky, absolutely diabolical little fairy has slid a contract under her nose and Marian signed it without reading a single word.
+
+And now?
+
+NOW?
+
+She has to marry whoever owns the Golden Goose.
+
+For the followers.
+
+Was it worth it Marian?
+
+WAS IT WORTH IT?
+
+Now here's where it gets complicated.
+
+Our Marian has only gone and fallen completely, hopelessly, ridiculously in love with Robin Hood while wandering through...
+
+The Forest of Dreams.
+
+(We do apologise. The woodland creatures have a contract too. They've been waiting. Please hold for a song and dance routine.)
+
+Right!
+
+Robin Hood now has to break into the Sheriff of Nottingham's fortress (boooooo!), steal a goose (don't ask), and win the hand of the woman he loves.
+
+How does one do all of that, you ask?
+
+Rap battle.`
+  },
+  {
+    title:"Peter Pan",
+    year:"2022",
+    img:"https://i.imgur.com/PkqZcXF.jpg",
+    img2:"https://i.imgur.com/NoP0Wza.jpg",
+    desc:`Mary Poppins has quit. As she was leaving I heard “Iamquittingrightnowc ausethosechildrenareatrocious”.
+
+The sheepdog is, to put it kindly, more sheep than dog. And the agency, in their infinite wisdom, has sent over Nanny Ninny.
+
+Nanny Ninny was not prepared for this family.
+
+She was not prepared for ANY of this.
+
+Nobody warned her about the subway. A secret subway - under Milton!!!
+
+This is no ordinary subway ride, ladies and gentlemen.
+
+This one goes all the way to NEVERLAND.
+
+Does she want to go to Neverland?
+
+SHE DOES NOT.
+
+Is she going anyway?
+
+OH YES SHE IS.
+
+And Neverland, it turns out, has problems. Big ones.
+
+A hockey King has taken over the whole place and everyone is getting overly Canadian about it.
+
+Captain Hook has not noticed, he frankly has enough on his plate right now because he accidentally downloaded TikTok thinking it was an app for tracking crocodiles.
+
+He has three million followers.
+
+He has no idea why.
+
+And yes we will show you his TikTok attempts.
+
+Meanwhile the fairies have unionised and signed a distribution deal with Amazon, which sounds great until you realize that Hook has been porch pirating every single delivery that comes through.
+
+Will ANYONE get what they asked for for Christmas?
+
+THEY WILL NOT!
+
+Not while Hook is lurking around with his enormous coat and suspicious number of pockets!
+
+Will Peter Pan get it together in time to save Neverland, see off the Hockey King, and get those presents back where they belong?
+
+Tink believes in him.
+
+And you know what they say.
+
+Every time you believe in a fairy...
+
+Actually Tink works for Amazon now.
+
+She needs a five star review and a tip.
+
+CLAP IF YOU BELIEVE IN FREE NEXT DAY DELIVERY!`
+  },
+  {
+    title:"Ice Princess",
+    year:"2019",
+    img:"https://i.imgur.com/qwtpUCs.jpg",
+    img2:"https://i.imgur.com/o4VwLg1.jpg",
+    desc:`Ladies and gentlemen, boys and girls, we need to have a word about grudges.
+
+Queen Lessa (boooooo! hissssss!) has had it in for her sister Mora ever since a little incident with a mirror back in the deep dark woods.
+
+Was it Mora's fault?
+
+Lessa says yes.
+
+Was Mora just a baby at the time?
+
+We're not getting into that.
+
+What we DO know is that Lessa has decided the whole of Notarendale is going to suffer for it, and she has made it winter FOREVER.
+
+No sun. No summer. Six thousand and forty five cups of hot chocolate.
+
+Nobody is happy.
+
+Except Lessa.
+
+She's delighted.
+
+She also wears a ring pop as jewellery and we're choosing not to comment on that.
+
+To help her make life thoroughly miserable, Lessa has conjured herself two monsters.
+
+Evil, terrible, hideous creatures of darkness and doom.
+
+Ladies and gentlemen...
+
+meet Frost and Bite.
+
+Together they are Frostbite.
+
+Are they terrifying?
+
+THEY ARE NOT.
+
+Are they adorable?
+
+THEY ABSOLUTELY ARE.
+
+Do they want to make cookies?
+
+THEY REALLY DO WANT TO MAKE COOKIES.
+
+Meanwhile over in Notarendale, the lovely Princess Mora (aaaawwww!) is trying to keep everyone's spirits up with the help of palace cook and absolute legend, Dame Patsy Pancake!
+
+(ALL OF THE NOISES, SHE DESERVES THEM ALL!)
+
+Patsy has buns in the oven, sweets in her pockets, and absolutely no idea what she's walked into.
+
+Then, out of nowhere, arrives Vincent Von Flukenfloffen.
+
+That's Von FLUKENFLOFFEN.
+
+He'll tell you himself.
+
+Repeatedly.
+
+This smarmy, untrustworthy, very large leprechaun of a man has rolled into town with his Summerator machine and one very alarming proposal.
+
+He'll end winter forever... if Mora agrees to marry him.
+
+Should she trust him?
+
+SHE SHOULD NOT!
+
+Does his machine even work properly?
+
+IT DOES NOT!
+
+Does he sing You're Welcome from Moana about it anyway?
+
+OH YES HE DOES!
+
+And lurking in the woods, there is Jack.
+
+Lovely, scruffy, chronically late Jack, who never goes anywhere without his dog Moose.
+
+His dog who can talk.
+
+His dog who can talk and has simply been waiting for someone to ask him something worth answering.
+
+We haven't even mentioned the Army of Unfinished Snowmen yet.
+
+Or DJ Snow, who rhymes all the time.
+
+Or the Blizzard Shark.
+
+Yes.
+
+There is a Blizzard Shark.
+
+Can Mora thaw her sister's frozen heart before Vincent's terrible plan ruins everything?
+
+Will Frost and Bite ever get to make those cookies?
+
+And will someone PLEASE check on Dame Patsy's buns?
+
+Come on in.
+
+It's absolutely freezing out there anyway.`
+  },
+  {
+    title:"Cinderella",
+    year:"2018",
+    img:"https://i.imgur.com/gSdxKZa.jpg",
+    img2:"https://i.imgur.com/wbSDYup.jpg",
+    desc:`Right. Before we begin. We need to address the fairy godmother situation.
+
+Twinkle Bum has been sent to help our Cinderella and she is doing her absolute best. She really is.
+
+The problem is that her wings have been stolen by a cat. Again.
+
+This is not the first time this has happened.
+
+Her fairy friends are frankly exhausted about it.
+
+Her magic is completely off without them and she cannot turn anyone into a unicorn no matter how many times she tries and believe us, she tries.
+
+Will she find her wings?
+
+CAN SHE FIND HER WINGS?
+
+Boys and girls, if you see that cat, you know what to do!
+
+Meanwhile, sweet Cinderella (aaaawwww!) is living with the most terrible step family in all of Storybook.
+
+Revolta Vandersnott (boooooo! hisssss!) is secretly a witch, openly a nightmare, and has just sent Cinderella out shopping for bat wings, eye of newt, and a black cauldron.
+
+Does Cinderella suspect anything?
+
+SHE DOES NOT.
+
+Does her best friend Gretel suspect everything?
+
+SHE ABSOLUTELY DOES.
+
+Now.
+
+Revolta has a plan.
+
+Her two daughters, Hanky and Panky Vandersnott, need husbands.
+
+Between you and us... the trash man has already said no.
+
+She is going to brew a love potion, and she needs the sweat of an intended suitor to make it work.
+
+And who just happens to turn up in town?
+
+Only HARRY WHATSUP! (yay!)
+
+Former member of One Direction.
+
+Went the other way.
+
+Dreamiest pop star this side of Storybook.
+
+Harry meets Cinderella at Zumba.
+
+It is immediately obvious to everyone in the room that something magical is happening between them.
+
+Unfortunately Revolta gets to the love potion first, and suddenly Harry is... not himself.
+
+He is incorrigibly, catastrophically, absolutely in love with himself.
+
+It is not a good look.
+
+Oh, and Cinderella's father isn't actually in Tahiti.
+
+He sells snow blowers.
+
+Nobody who sells snow blowers has business in Tahiti.
+
+She hired a detective to find him.
+
+The detective’s name is Stew Pidman and we'll say no more.
+
+Will the spiders ever stop dancing the tango long enough for anyone to clean the kitchen?
+
+Will Hanky and Panky ever find love, or at minimum a fitbit that fits?
+
+Will Harry snap out of it in time?
+
+Will Twinkle Bum get it together before any of that matters?
+
+There is also a very large spider with a solo number and we feel you should be emotionally prepared for that.
+
+Come on in.
+
+Just don't touch the cauldron.`
+  }
+];
+
+function renderPastShows(){
+  const grid = document.getElementById('past-grid');
+  if(!grid) return;
+
+  grid.innerHTML = shows.map((s,i)=>`
+    <div class="card cursor-pointer active:scale-95" onclick="openShow(${i})">
+      <div class="relative rounded-xl overflow-hidden">
+        <img src="${s.img}" class="w-full aspect-[4/5] object-cover" />
+        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/80"></div>
+        <div class="absolute bottom-3 left-3">
+          <h4 class="text-lg font-bold">${s.title}</h4>
+          <p class="text-xs opacity-80">${s.year}</p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+let currentShow = 0;
+
+function openShow(i){
+  currentShow = i;
+  const show = shows[i];
+
+  // fill content safely
+  document.getElementById('show-img').src = show.img;
+  document.getElementById('show-img-2').src = show.img2 || show.img;
+  document.getElementById('show-title').innerText = show.title;
+
+  const paragraphs = show.desc.split("\n\n");
+  document.getElementById('show-desc').innerHTML = paragraphs.map(p=>`<p>${p}</p>`).join('');
+
+  // toggle views
+  document.getElementById('main-page').classList.add('hidden');
+  document.getElementById('show-page').classList.remove('hidden');
+}
+
+function nextShow(){
+  currentShow = (currentShow + 1) % shows.length;
+  openShow(currentShow);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function prevShow(){
+  currentShow = (currentShow - 1 + shows.length) % shows.length;
+  openShow(currentShow);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function closeShow(){
+  document.getElementById('show-page').classList.add('hidden');
+  document.getElementById('main-page').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const jokes = [
+["Why did the scarecrow win an award?","Because he was outstanding in his field!"],
+["What do you call a fish without eyes?","A fsh!"],
+["Why can't Elsa have a balloon?","Because she'll let it go!"],
+["What do you call a sleeping dinosaur?","A dino-snore!"],
+["Why did the bicycle fall over?","Because it was two-tired!"],
+["Why can't you give Elsa a balloon? (Oh yes you can!) Oh no you can't! We already did that one…","she'd just let it go AGAIN!"],
+["What do you call cheese that isn't yours?","Nacho cheese!"],
+["Why did the math book look so sad?","Because it had too many problems!"],
+["What do elves learn in school?","The elf-abet!"],
+["Oh don’t be sad about the cheese.","That joke was so bad it was grate."],
+["What do you call a bear with no teeth?","A gummy bear!"],
+["Why did the banana go to the doctor?","Because it wasn't peeling well!"],
+["What do you call a lazy kangaroo?","A pouch potato!"],
+["Why did the golfer bring an extra pair of trousers?","In case he got a hole in one!"],
+["What do you call a snowman having a tantrum?","A meltdown!"],
+["Why did the gummy bear say no to corn on the cob?","We already told you the gummy bear has no teeth."],
+["What do you call a dog magician?","A labra-cadabra-dor!"],
+["What do you call a fake noodle?","An im-pasta!"],
+["Why did the orange stop halfway up the hill?","It ran out of juice!"],
+["What do you call a cow in an earthquake?","A milkshake!\n(The banana was there, it still wasn’t peeling well…)"],
+["Why did the tomato blush?","Because it saw the salad dressing!"],
+["What do you call a pony with a cough?","A little hoarse!"],
+["Why did the king go to the dentist?","To get his crown fitted!\n(Although the gummy bear should go to the dentist a LOT more often…)"],
+["What do you call a man with a spade on his head? Doug! What do you call a man WITHOUT a spade on his head?","Douglas!"],
+["Why did the panto audience keep shouting \"He's behind you!\"?","Because that's just how they roll … and yes, Elsa's STILL back there. She let go of the balloon. We told you not to give it to her."]
+];
+
+// remove old flat jokes
+/*
+"Why did the scarecrow win an award? Because he was outstanding in his field!",
+"What do you call a fish without eyes? A fsh!",
+"Why can't Elsa have a balloon? Because she'll let it go!",
+"What do you call a sleeping dinosaur? A dino-snore!"
+*/
+
+function typeWriterLines(setup, punchline, el, speed=25){
+  el.innerHTML = '';
+
+  let fullText = setup + "\n" + punchline;
+  let i = 0;
+
+  function type(){
+    if(i < fullText.length){
+      let char = fullText.charAt(i);
+      if(char === "\n"){
+        el.innerHTML += "<br>";
+      } else {
+        el.innerHTML += char;
+      }
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+
+  type();
+}
+
+function typeWriter(text, el, speed=25){
+  el.innerHTML = '';
+  let i = 0;
+  function type(){
+    if(i < text.length){
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
+
+function tellJoke(){
+  const modal = document.getElementById('joke-modal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  anotherJoke();
+}
+
+let currentJokeIndex = 0;
+
+function anotherJoke(){
+  const textEl = document.getElementById('joke-text');
+  const joke = jokes[currentJokeIndex];
+
+  typeWriterLines(joke[0], joke[1], textEl, 20);
+
+  currentJokeIndex = (currentJokeIndex + 1) % jokes.length;
+}
+
+function closeJoke(){
+  const modal = document.getElementById('joke-modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
+// close when clicking outside (FIXED)
+const jokeModal = document.getElementById('joke-modal');
+const jokeCard = document.getElementById('joke-card');
+
+jokeModal.addEventListener('click', (e)=>{
+  if(e.target === jokeModal){
+    jokeModal.classList.add('hidden');
+    jokeModal.classList.remove('flex');
+  }
+});
+
+// CONTACT FORM HANDLER
+const contactForm = document.getElementById('contact-form');
+if(contactForm){
+  contactForm.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const formData = new FormData(contactForm);
+
+    try{
+      await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      contactForm.reset();
+
+      const modal = document.getElementById('success-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      setTimeout(()=>{
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 3000);
+
+    } catch(err){
+      alert('Something went wrong. Try again!');
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  renderPastShows();
+  setHomeIcon('white');
+  document.querySelectorAll('.fade-in').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('visible'), i*150);
+  });
+});
+</script>
+<script>
+function openAbout(){
+  document.getElementById('main-page').classList.add('hidden');
+  document.getElementById('show-page').classList.add('hidden');
+  const about = document.getElementById('about-page');
+  about.classList.remove('hidden');
+  setTimeout(()=>about.classList.remove('opacity-0'),10);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goHome(){
+  const about = document.getElementById('about-page');
+  if(about){
+    about.classList.add('opacity-0');
+    setTimeout(()=>about.classList.add('hidden'),500);
+  }
+  document.getElementById('show-page').classList.add('hidden');
+  document.getElementById('main-page').classList.remove('hidden');
+  document.getElementById('main-page').scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script></body>
+</html>
