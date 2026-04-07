@@ -43,6 +43,17 @@ img{transition:all .4s ease}
 .joke-fade{opacity:0}
 
 body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !important; }
+
+#menu-backdrop {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+@media (max-width: 768px) {
+  #mobile-menu {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
 </style>
 </head>
 <body class="bg-black text-white font-sans" style="font-family: 'Montserrat', sans-serif;">
@@ -51,7 +62,7 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
 <button class="text-white" id="home-btn" onclick="goHome()">
 <svg class="w-8 h-8 md:w-6 md:h-6" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z"></path></svg>
 </button>
-<h1 class="text-xl text-xl text-xl md:text-lg" onclick="goHome()">Brightside Players</h1>
+<h1 class="text-xl font-bold cursor-pointer" onclick="goHome()">Brightside Players</h1>
 </div>
 <nav class="text-sm flex items-center gap-4">
 <button class="border border-white px-3 py-1 rounded-lg hover:bg-white hover:text-black transition glow" onclick="tellJoke()">Need a joke?</button>
@@ -60,18 +71,18 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
 <a href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('past'),100); return false;">Past Shows</a>
 <a href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact</a>
 </div>
-<button class="md:hidden border border-white px-3 py-1 rounded-lg transition" id="menu-btn" onclick="toggleMenu()">☰</button>
+<button class="md:hidden border border-white px-3 py-1 rounded-lg hover:bg-white hover:text-black transition glow" id="menu-btn" onclick="toggleMenu()">☰</button>
 </nav>
-<div class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 z-30" id="menu-backdrop"></div>
+<div class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-all duration-300 z-30" id="menu-backdrop"></div>
 <div class="fixed top-0 left-0 right-0 bg-black border-b border-white z-40 p-6 flex flex-col gap-4 transform -translate-y-full opacity-0 pointer-events-none transition-all duration-300" id="mobile-menu">
-<a href="#" onclick="openAbout(); return false;">About</a>
+<a href="#" onclick="closeMenu(); openAbout(); return false;">About</a>
 <a href="#" onclick="closeMenu(); goHome(); setTimeout(()=&gt;scrollToSection('past'),100); return false;">Past Shows</a>
 <a href="#" onclick="closeMenu(); goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact</a>
 </div>
 </header>
 <div id="main-page">
 <section class="relative w-full h-[50vh] md:h-[70vh] overflow-hidden">
-<img class="w-full h-full object-cover kenburns" src="https://i.imgur.com/TI1ifLX.jpg"/>
+<img class="w-full h-full kenburns object-contain md:object-cover" src="https://i.imgur.com/TI1ifLX.jpg"/>
 <div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 to-transparent"></div>
 </section>
 <section class="p-10 max-w-4xl mx-auto fade-in">
@@ -901,7 +912,7 @@ function openAbout(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function goHome(){
+// removed duplicate goHome(){
   const about = document.getElementById('about-page');
   if(about){
     about.classList.add('opacity-0');
