@@ -54,25 +54,25 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
 <h1 class="text-xl font-bold cursor-pointer" onclick="goHome()">Brightside Players</h1>
 </div>
 <nav class="text-sm flex items-center gap-4">
-<button class="h-10 flex items-center justify-center border border-white px-3 rounded-lg hover:bg-white hover:text-black transition glow" onclick="tellJoke()">Need a joke?</button>
+<button class="border border-white px-3 py-1 rounded-lg hover:bg-white hover:text-black transition glow" onclick="tellJoke()">Need a joke?</button>
 <div class="hidden md:flex items-center gap-4">
 <a href="#" onclick="openAbout(); return false;">About</a>
 <a href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('past'),100); return false;">Past Shows</a>
 <a href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact</a>
 </div>
-<button class="md:hidden h-10 flex items-center justify-center border border-white px-3 rounded-lg hover:bg-white hover:text-black transition glow" id="menu-btn" onclick="toggleMenu()">☰</button>
+<button class="md:hidden border border-white px-3 py-1 rounded-lg transition" id="menu-btn" onclick="toggleMenu()">☰</button>
 </nav>
-<div class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-all duration-300 z-30" id="menu-backdrop"></div>
+<div class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 z-30" id="menu-backdrop"></div>
 <div class="fixed top-0 left-0 right-0 bg-black border-b border-white z-40 p-6 flex flex-col gap-4 transform -translate-y-full opacity-0 pointer-events-none transition-all duration-300" id="mobile-menu">
-<a href="#" onclick="closeMenu(); openAbout(); return false;">About</a>
+<a href="#" onclick="openAbout(); return false;">About</a>
 <a href="#" onclick="closeMenu(); goHome(); setTimeout(()=&gt;scrollToSection('past'),100); return false;">Past Shows</a>
 <a href="#" onclick="closeMenu(); goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact</a>
 </div>
 </header>
-<div id="main-page">
+<div class="flex items-center justify-center bg-black" id="main-page">
 <section class="relative w-full h-[50vh] md:h-[70vh] overflow-hidden">
-<img class="w-full h-full object-cover kenburns object-[center_15%] md:object-center" src="https://i.imgur.com/TI1ifLX.jpg"/>
-<div class="absolute bottom-0 left-0 right-0 h-16 md:h-28 bg-gradient-to-t from-black/60 md:from-black/80 to-transparent"></div>
+<img class="w-full h-full object-contain md:object-cover kenburns" src="https://i.imgur.com/TI1ifLX.jpg"/>
+<div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 to-transparent"></div>
 </section>
 <section class="p-10 max-w-4xl mx-auto fade-in">
 <div class="flex items-center justify-between gap-4 flex-wrap">
@@ -158,7 +158,7 @@ BUY TICKETS
 </footer>
 </div>
 <!-- SHOW PAGE -->
-<div class="hidden bg-black text-white min-h-screen opacity-0 transition-opacity duration-700" id="about-page"><div class="max-w-4xl mx-auto"><section class="w-full h-[40vh] md:h-[55vh] overflow-hidden"><img class="w-full h-full object-cover md:object-center object-[center_25%]" src="https://i.imgur.com/6OYiCaX.jpg"/></section><section class="p-10 fade-in">
+<div class="hidden bg-black text-white min-h-screen opacity-0 transition-opacity duration-700" id="about-page"><div class="max-w-4xl mx-auto"><section class="w-full h-[40vh] md:h-[55vh] overflow-hidden"><img class="w-full h-full object-cover" src="https://i.imgur.com/6OYiCaX.jpg"/></section><section class="p-10 fade-in">
 <button class="mb-6 underline" onclick="goHome()">← Back</button>
 <h1 class="text-4xl font-bold mb-6">Welcome to the Brightside!</h1>
 <div class="space-y-6 text-lg leading-relaxed">
@@ -890,8 +890,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
     setTimeout(()=>el.classList.add('visible'), i*150);
   });
 });
-
-document.getElementById('menu-backdrop').addEventListener('click', closeMenu);
 </script>
 <script>
 function openAbout(){
