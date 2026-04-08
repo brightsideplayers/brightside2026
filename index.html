@@ -21,7 +21,14 @@
 body { font-family: 'Oswald', sans-serif; }
 h1,h2,h3,h4{letter-spacing:.5px}p{font-weight:400}
 #main-page{overflow-y:auto;height:100vh}
-@keyframes kenburns{0%{transform:scale(1.05)}100%{transform:scale(1.12)}}
+@keyframes kenburns {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}100%{transform:scale(1.12)}}
 .kenburns{animation:kenburns 20s ease-in-out infinite alternate}
 
 /* POLISH */
@@ -43,6 +50,13 @@ img{transition:all .4s ease}
 .joke-fade{opacity:0}
 
 body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !important; }
+
+@media (max-width: 768px) {
+  .kenburns {
+    animation: none !important;
+    transform: scale(1) !important;
+  }
+}
 </style>
 </head>
 <body class="bg-black text-white font-sans" style="font-family: 'Montserrat', sans-serif;">
@@ -70,9 +84,9 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
 </div>
 </header>
 <div id="main-page">
-<section class="relative w-full h-[50vh] md:h-[70vh] overflow-hidden">
-<img class="w-full h-full object-cover kenburns kenburns object-[center_20%] md:object-center" src="https://i.imgur.com/TI1ifLX.jpg"/>
-<div class="absolute bottom-0 left-0 right-0 h-16 md:h-28 bg-gradient-to-t from-black/60 md:from-black/80 to-transparent"></div>
+<section class="h-auto relative w-full md:h-[70vh] overflow-hidden flex justify-center bg-black items-start">
+<picture><source media="(max-width: 768px)" srcset="https://i.imgur.com/IrzBvty.jpeg"/><img class="w-full h-full object-contain md:object-cover kenburns object-center" src="https://i.imgur.com/TI1ifLX.jpg"/></picture>
+<div class="absolute bottom-0 left-0 right-0 md:h-28 bg-gradient-to-t md:from-black/80 to-transparent h-12 md:h-28 from-black/40 md:from-black/80"></div>
 </section>
 <section class="p-10 max-w-4xl mx-auto fade-in">
 <div class="flex items-center justify-between gap-4 flex-wrap">
