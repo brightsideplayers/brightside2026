@@ -57,6 +57,23 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
     transform: scale(1) !important;
   }
 }
+
+/* AUDITION TICKER */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  min-width: 100%;
+  animation: marquee 18s linear infinite;
+}
+
+#audition-ticker:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 </style>
 </head>
 <body class="bg-black text-white font-sans" style="font-family: 'Montserrat', sans-serif;">
@@ -71,6 +88,7 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
 <button class="h-10 flex items-center justify-center border border-white px-3 rounded-lg hover:bg-white hover:text-black transition glow" onclick="tellJoke()">Need a joke?</button>
 <div class="hidden md:flex items-center gap-4">
 <a href="#" onclick="openAbout(); return false;">About</a>
+<a href="#" onclick="openAuditions(); return false;">Auditions</a>
 <a href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('past'),100); return false;">Past Shows</a>
 <a href="#" onclick="goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact</a>
 </div>
@@ -79,10 +97,23 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
 <div class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-all duration-300 z-30" id="menu-backdrop"></div>
 <div class="fixed top-0 left-0 right-0 bg-black border-b border-white z-40 p-6 flex flex-col gap-4 transform -translate-y-full opacity-0 pointer-events-none transition-all duration-300" id="mobile-menu">
 <a href="#" onclick="closeMenu(); openAbout(); return false;">About</a>
+<a href="#" onclick="closeMenu(); openAuditions(); return false;">Auditions</a>
 <a href="#" onclick="closeMenu(); goHome(); setTimeout(()=&gt;scrollToSection('past'),100); return false;">Past Shows</a>
 <a href="#" onclick="closeMenu(); goHome(); setTimeout(()=&gt;scrollToSection('contact'),100); return false;">Contact</a>
 </div>
 </header>
+<!-- AUDITION TICKER -->
+<div
+  id="audition-ticker"
+  onclick="openAuditions()"
+  class="bg-teal-400 text-black font-bold overflow-hidden whitespace-nowrap border-b border-teal-300 cursor-pointer hover:bg-teal-300 transition relative z-40"
+  aria-label="Auditions open now. Click here for information."
+>
+  <div class="animate-marquee py-3 text-sm md:text-base tracking-wide">
+    🎭 AUDITIONS OPEN NOW: Click here for information • Saturday, September 12, 2026 • St. Paul's Church, Milton • Lower Level • Kids 7–13 at 1:00 PM • Adults 13+ at 2:00 PM • 🎭
+  </div>
+</div>
+
 <div id="main-page">
 <section class="h-auto relative w-full md:h-[70vh] overflow-hidden flex justify-center bg-black items-start">
 <picture><source media="(max-width: 768px)" srcset="https://i.imgur.com/IrzBvty.jpeg"/><img class="w-full h-full object-contain md:object-cover kenburns object-center" src="https://i.imgur.com/TI1ifLX.jpg"/></picture>
@@ -94,20 +125,100 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
 <a class="inline-block bg-teal-400 text-black px-6 py-4 rounded-xl font-semibold transition transform hover:scale-105 hover:bg-teal-300 active:scale-95 glow" href="https://www.firstontarioartscentremilton.ca/en/shows-and-events/additional-performances-2025.aspx" target="_blank">
     BUY TICKETS
   </a>
+<a class="inline-block bg-fuchsia-300 text-black px-6 py-4 rounded-xl font-semibold transition transform hover:scale-105 hover:bg-fuchsia-200 active:scale-95 glow" href="#" onclick="openAuditions(); return false;">
+    AUDITION INFORMATION
+  </a>
 </div>
 <div class="mt-4 space-y-4 leading-relaxed">
 <div class="text-left">
-<p class="text-xs tracking-[0.35em] uppercase opacity-70">Dive into Adventure</p>
+  <p class="text-xs tracking-[0.35em] uppercase opacity-70">Dive into Adventure</p>
 </div>
-<p>Right, everybody listen up. We need to talk about making deals with Sand Witches.</p>
-<p>Shelley the mermaid has one dream. Not a palace. Not a treasure chest. Not even a decent Wi-Fi signal. Just ONE day on land. That's it. That's all she wants. And when the Sand Witch comes slithering along with exactly that offer... does Shelley stop to read the small print? She does not.</p>
-<p>Because here's the catch. If Shelley doesn't fix everything before the day is done, she loses her voice. <strong>FOREVER.</strong> Now, is that a reasonable set of terms? <strong>IT IS NOT.</strong> Is the Sand Witch full of baloney? <strong>SHE IS ABSOLUTELY FULL OF BALONEY.</strong> Will we be booing her every single time she sets foot on that stage? <strong>YOU TRY AND STOP US.</strong></p>
+
+<p>Right, everyone… gather round.</p>
+
+<p>We need to talk about making deals with Sand Witches.</p>
+
+<p>Shelley the mermaid has one dream. Not a palace. Not a treasure chest. Not even a decent Wi-Fi signal. She wants just <strong>ONE DAY</strong> on land. So when the Sand Witch comes slithering along with exactly that offer... does Shelley stop to read the small print?</p>
+
+<p><strong>She does not.</strong></p>
+
+<p>Because here's the catch. If Shelley doesn't fix everything topside before the day is done, she loses her voice.</p>
+
+<p><strong>FOREVER.</strong></p>
+
+<p>Is that a reasonable set of terms?</p>
+
+<p><strong>IT IS NOT.</strong></p>
+
+<p>Is the Sand Witch full of baloney?</p>
+
+<p><strong>SHE IS ABSOLUTELY FULL OF BALONEY.</strong></p>
+
+<p>Will the entire audience be booing her every time she sets foot on that stage?</p>
+
+<p><strong>YOU TRY AND STOP THEM.</strong></p>
+
+<p>Children will stand up from their seats and <strong>BOO WILDLY.</strong></p>
+
+<p>It is encouraged.</p>
+
 <p>Down on the sea floor, things have gotten dire. King Plastico has been merrily dumping rubbish into the ocean and frankly the whole place is a TIP. Shelley has had enough. Her friends have had enough. Even the fish have had enough, and fish are generally quite easy going.</p>
-<p>Speaking of friends! Let's hear it for the lineup: Double Double the wisecracking, fast-talking, impossibly charming crustacean who always has something to say and is rarely helpful but always entertaining! The crab. In a cup. You heard us correctly. Moving on! And of course... the incomparable... the irreplaceable... the one, the only... DAME HATTIE HALIBUT! (AAAAAWWWW! YAY! ALL OF THE ABOVE!), who runs a fish and chip shop in town. (Don’t mention the Fishmonger, they are complete rivals)</p>
-<p>Together this unlikely crew is going to take on a greedy king, outwit a scheming Sand Witch, clean up the ocean, AND save Shelley's voice before the clock runs out.</p>
-<p>Will they manage it? <strong>THEY WILL TRY!</strong> Will there be singing? <strong>THERE WILL BE SINGING!</strong> Will there be chaos, colour, and at least one moment where someone gets absolutely soaked? ...we did say splash into a night of laughter. You were warned. Don’t worry, you don’t really need an umbrella.</p>
-<p>Cheer for the heroes! Boo the villains! And if you see that Sand Witch coming… She's on a roll and she's got a lot of crust. <strong>Don't let her get away with it!</strong></p>
-</div>
+
+<p>Speaking of friends! Meet the crew:</p>
+
+<p><strong>Double Double</strong> — the wisecracking, fast-talking, impossibly charming crustacean who always has something to say and is rarely helpful but always, always entertaining.</p>
+
+<p>A crab.</p>
+
+<p><strong>In a cup.</strong></p>
+
+<p>You heard us correctly.</p>
+
+<p>Moving on.</p>
+
+<p>And of course... the incomparable... the irreplaceable...</p>
+
+<p><strong>DAME HATTIE HALIBUT!</strong></p>
+
+<p>(All the cheering. All of it.)</p>
+
+<p>She runs the finest fish and chip shop in town.</p>
+
+<p><strong>Do not mention the Fishmonger.</strong></p>
+
+<p>They are complete rivals and we don't have time for that drama.</p>
+
+<p>Together, this unlikely crew will take on a greedy king, outwit a scheming Sand Witch, clean up the ocean, <strong>AND</strong> save Shelley's voice before the clock runs out.</p>
+
+<p>Will they manage it?</p>
+
+<p><strong>THEY WILL TRY.</strong></p>
+
+<p>Will there be singing?</p>
+
+<p><strong>THERE WILL BE SINGING.</strong></p>
+
+<p>Will there be chaos, colour, and at least one moment where someone gets absolutely soaked?</p>
+
+<p>We did say splash into a night of laughter.</p>
+
+<p>You were warned.</p>
+
+<p>Don't worry, umbrellas aren't actually required.</p>
+
+<p>Cheer for the heroes.</p>
+
+<p>Boo the villain.</p>
+
+<p>And if you see that Sand Witch coming, don't let her get away with it.</p>
+
+<p><strong>Perfect for children aged 3–10 and any adult who enjoys a good boo.</strong></p>
+
+<p>Heck, bring your teens. We promise even they'll get a chuckle.</p>
+
+<p><strong>Running time approximately 1 hour 45 minutes including an interval.</strong></p>
+
+<p><strong>Suitable for the whole family.</strong></p>
 <a class="inline-block mt-6 bg-teal-400 text-black px-6 py-4 rounded-xl font-semibold transition transform hover:scale-105 hover:bg-teal-300 active:scale-95 glow" href="https://www.firstontarioartscentremilton.ca/en/shows-and-events/additional-performances-2025.aspx" target="_blank">
 BUY TICKETS
 </a>
@@ -171,6 +282,110 @@ BUY TICKETS
 <p class="mt-2">Made with chaos, glitter, and a questionable number of pop tarts.</p>
 </footer>
 </div>
+
+<!-- AUDITION PAGE -->
+<div class="hidden bg-black text-white min-h-screen opacity-0 transition-opacity duration-700" id="audition-page">
+  <div class="max-w-5xl mx-auto">
+    <section class="p-8 md:p-10 fade-in visible">
+      <button class="mb-6 underline" onclick="goHome()">← Back</button>
+
+      <img
+        src="https://i.imgur.com/suULG9P.png"
+        alt="Brightside Players Auditions"
+        class="w-full rounded-xl mb-8 shadow-lg"
+      />
+
+      <p class="text-xs tracking-[0.35em] uppercase opacity-70 mb-3">Come join the chaos</p>
+
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-teal-400">
+        AUDITIONS OPEN NOW
+      </h1>
+
+      <p class="text-xl mb-8 opacity-90">
+        No experience required. No preparation required. Just show up.
+      </p>
+
+      <div class="bg-teal-400 text-black p-6 rounded-xl mb-8">
+        <p class="font-bold text-xl">
+          Ages 7+ welcome.
+        </p>
+        <p>
+          Some of our best performers had never stepped on a stage before their first Brightside audition.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div class="border border-white rounded-2xl p-6 bg-white/5">
+          <h2 class="text-2xl font-bold mb-4">Audition Details</h2>
+          <div class="space-y-3 text-lg leading-relaxed">
+            <p><span class="font-semibold">Date:</span> Saturday, September 12, 2026</p>
+            <p><span class="font-semibold">Location:</span> St. Paul's Church, Milton</p>
+            <p><span class="font-semibold">Room:</span> Lower Level</p>
+          </div>
+        </div>
+
+        <div class="border border-white rounded-2xl p-6 bg-white/5">
+          <h2 class="text-2xl font-bold mb-4">Audition Times</h2>
+          <div class="space-y-3 text-lg leading-relaxed">
+            <p><span class="font-semibold">Kids 7–13:</span> 1:00 PM</p>
+            <p><span class="font-semibold">Adults / Teens 13+:</span> 2:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-white rounded-2xl overflow-hidden bg-white/5 mb-10">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold mb-2">Map</h2>
+          <p class="opacity-80">St. Paul's Church, Milton</p>
+        </div>
+        <iframe
+          class="w-full h-[320px] border-0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=St.%20Paul%27s%20Church%20Milton%20Ontario&output=embed">
+        </iframe>
+      </div>
+
+      <div class="border border-white rounded-2xl p-6 bg-white/5">
+        <h2 class="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+
+        <div class="space-y-6 leading-relaxed">
+          <div>
+            <h3 class="text-xl font-bold text-teal-400">Do I need experience?</h3>
+            <p>No. Some of our best performers had none when they walked in.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-teal-400">Do I need to sing?</h3>
+            <p>We will ask you to sing a little. Nothing prepared. We give you something on the night. The bar is lower than you think and the point is not perfection.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-teal-400">What if I'm nervous?</h3>
+            <p>Good. Nerves mean you care. Everyone who has ever been in one of our shows was nervous walking in. The nerves do not mean you shouldn't go.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-teal-400">What ages can audition?</h3>
+            <p>Ages 7 and up for chorus. Ages 13 and up for speaking roles. Our casts range from 7–77 and family involvement is encouraged.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-teal-400">Do I need to prepare anything?</h3>
+            <p>No. Show up. That is the whole job.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-teal-400">What happens on the day?</h3>
+            <p>You come in. You meet some lovely people. You do some reading. You laugh a whole-hearted belly laugh. You sing a little. You go home. It is genuinely that straightforward.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
 <!-- SHOW PAGE -->
 <div class="hidden bg-black text-white min-h-screen opacity-0 transition-opacity duration-700" id="about-page"><div class="max-w-4xl mx-auto"><section class="w-full h-[40vh] md:h-[55vh] overflow-hidden"><img class="w-full h-full object-cover md:object-center object-[center_25%]" src="https://i.imgur.com/6OYiCaX.jpg"/></section><section class="p-10 fade-in">
 <button class="mb-6 underline" onclick="goHome()">← Back</button>
@@ -248,6 +463,8 @@ function setHomeIcon(color){
 
 function goHome(){
   document.getElementById('show-page').classList.add('hidden');
+  const audition = document.getElementById('audition-page');
+  if(audition){ audition.classList.add('opacity-0'); audition.classList.add('hidden'); }
   document.getElementById('main-page').classList.remove('hidden');
   document.getElementById('main-page').scrollTo({ top: 0, behavior: 'smooth' });
   setHomeIcon('white');
@@ -756,6 +973,8 @@ function prevShow(){
 
 function closeShow(){
   document.getElementById('show-page').classList.add('hidden');
+  const audition = document.getElementById('audition-page');
+  if(audition){ audition.classList.add('opacity-0'); audition.classList.add('hidden'); }
   document.getElementById('main-page').classList.remove('hidden');
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -908,9 +1127,28 @@ window.addEventListener('DOMContentLoaded', ()=>{
 document.getElementById('menu-backdrop').addEventListener('click', closeMenu);
 </script>
 <script>
+
+function openAuditions(){
+  closeMenu();
+  const about = document.getElementById('about-page');
+  if(about){
+    about.classList.add('opacity-0');
+    about.classList.add('hidden');
+  }
+  document.getElementById('show-page').classList.add('hidden');
+  document.getElementById('main-page').classList.add('hidden');
+
+  const auditions = document.getElementById('audition-page');
+  auditions.classList.remove('hidden');
+  setTimeout(()=>auditions.classList.remove('opacity-0'),10);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
 function openAbout(){
   document.getElementById('main-page').classList.add('hidden');
   document.getElementById('show-page').classList.add('hidden');
+  const audition = document.getElementById('audition-page');
+  if(audition){ audition.classList.add('opacity-0'); audition.classList.add('hidden'); }
   const about = document.getElementById('about-page');
   about.classList.remove('hidden');
   setTimeout(()=>about.classList.remove('opacity-0'),10);
