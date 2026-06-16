@@ -60,17 +60,26 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
 
 /* AUDITION TICKER */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.animate-marquee {
-  display: inline-block;
-  min-width: 100%;
+.marquee-wrapper {
+  display: flex;
+  width: max-content;
   animation: marquee 18s linear infinite;
 }
 
-#audition-ticker:hover .animate-marquee {
+.marquee-wrapper span {
+  white-space: nowrap;
+  padding-right: 4rem;
+}
+
+#audition-ticker:hover .marquee-wrapper {
   animation-play-state: paused;
 }
 
@@ -109,9 +118,15 @@ body, h1, h2, h3, h4, p, a, button { font-family: 'Montserrat', sans-serif !impo
   class="bg-teal-400 text-black font-bold overflow-hidden whitespace-nowrap border-b border-teal-300 cursor-pointer hover:bg-teal-300 transition relative z-40"
   aria-label="Auditions open now. Click here for information."
 >
-  <div class="animate-marquee py-3 text-sm md:text-base tracking-wide">
+ <div class="marquee-wrapper py-3 text-sm md:text-base tracking-wide">
+  <span>
     🎭 AUDITIONS OPEN NOW: Click here for information • Saturday, September 12, 2026 • St. Paul's Church, Milton • Lower Level • Kids 7–13 at 1:00 PM • Adults 13+ at 2:00 PM • 🎭
-  </div>
+  </span>
+
+  <span>
+    🎭 AUDITIONS OPEN NOW: Click here for information • Saturday, September 12, 2026 • St. Paul's Church, Milton • Lower Level • Kids 7–13 at 1:00 PM • Adults 13+ at 2:00 PM • 🎭
+  </span>
+</div>
 </div>
 
 <div id="main-page">
